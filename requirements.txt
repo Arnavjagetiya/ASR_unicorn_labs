@@ -1,0 +1,6 @@
+librosa
+pandas
+jiwer
+numpy
+torch
+transformers
