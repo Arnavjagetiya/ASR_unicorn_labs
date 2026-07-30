@@ -17,3 +17,10 @@ export default function WERCalculatorPage() {
     </div>
   );
 }
+
+import TryItYourself from "@/components/wer/TryItYourself";
+
+// ...inside your page, after the existing calculator card:
+<div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 mt-6">
+  <TryItYourself />
+</div>
