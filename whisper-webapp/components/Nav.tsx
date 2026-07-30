@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/pipeline", label: "How Whisper Hears" },
   { href: "/results", label: "Results" },
   { href: "/wer-calculator", label: "WER Calculator" },
+  { href: "/literature", label: "Literature" },
 ];
 
 export default function Nav() {
