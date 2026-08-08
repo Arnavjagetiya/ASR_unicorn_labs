@@ -10,6 +10,7 @@ const LINKS = [
   { href: "/results", label: "Results" },
   { href: "/wer-calculator", label: "WER Calculator" },
   { href: "/literature", label: "Literature" },
+  { href: "/model-comparison", label: "NVIDIA & Meta" },
 ];
 
 export default function Nav() {
