@@ -29,18 +29,15 @@ export const NVIDIA_STATS: ModelStats = {
   },
 };
 
-// TODO: replace with real numbers once meta_results.csv is available and processed
-// the same way (see nvidia_results.csv -> NVIDIA_STATS above for the method).
 export const META_STATS: ModelStats = {
   modelName: "Meta MMS-1B-all",
   modelId: "facebook/mms-1b-all",
   color: "#0668E1",
-  isPlaceholder: true,
-  us: { n: 0, mean: 0, median: 0, std: 0, min: 0, max: 0 },
-  india: { n: 0, mean: 0, median: 0, std: 0, min: 0, max: 0 },
-  significance: { pValue: 0, cohensD: 0 },
+  us: { n: 60, mean: 0.0597, median: 0.0435, std: 0.0407, min: 0.0, max: 0.2029 },
+  india: { n: 60, mean: 0.0913, median: 0.087, std: 0.0481, min: 0.0145, max: 0.1884 },
+  significance: { pValue: 0.00005, cohensD: 0.71 },
   errorTypes: {
-    us: { substitutions: 0, deletions: 0, insertions: 0 },
-    india: { substitutions: 0, deletions: 0, insertions: 0 },
+    us: { substitutions: 2.73, deletions: 1.08, insertions: 0.3 },
+    india: { substitutions: 5.22, deletions: 0.88, insertions: 0.2 },
   },
 };
