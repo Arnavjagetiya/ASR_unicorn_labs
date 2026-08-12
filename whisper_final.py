@@ -18,8 +18,10 @@ US_DIR = "us_clips"
 INDIA_DIR = "india_clips"
 
 # ── 2. Load Whisper ─────────────────────────────────────────────────────────
-print("Loading whisper-tiny model...")
-model = whisper.load_model("small")
+MODEL_SIZE = "small"          # change to "tiny", "base", "medium", etc.
+
+print(f"Loading whisper-{MODEL_SIZE} model...")
+model = whisper.load_model(MODEL_SIZE)
 
 # ── 3. Transcribe a folder of clips ─────────────────────────────────────────
 def transcribe_folder(folder_path, group_name):
@@ -54,8 +56,11 @@ india_results = transcribe_folder(INDIA_DIR, "India")
 # ── 4. Save side-by-side comparison ─────────────────────────────────────────
 all_results = us_results + india_results
 df_results = pd.DataFrame(all_results)
-df_results.to_csv("results_comparison.csv", index=False)
-print("Saved full comparison to results_comparison.csv")
+df_results["model"] = MODEL_SIZE          # keeps size in the data, not just the filename
+
+output_file = f"results_comparison_{MODEL_SIZE}.csv"
+df_results.to_csv(output_file, index=False)
+print(f"Saved full comparison to {output_file}")
 
 # ── 5. Calculate WER per group ───────────────────────────────────────────────
 us_gt = [r["ground_truth"] for r in us_results]
@@ -67,7 +72,7 @@ india_pred = [r["prediction"] for r in india_results]
 us_wer = jiwer.wer(us_gt, us_pred) if us_results else None
 india_wer = jiwer.wer(india_gt, india_pred) if india_results else None
 
-print("\n========== FINAL RESULTS ==========")
+print(f"\n========== FINAL RESULTS ({MODEL_SIZE}) ==========")
 print(f"US English WER:     {us_wer:.4f} ({us_wer*100:.2f}%)" if us_wer is not None else "US: no clips found")
 print(f"Indian English WER: {india_wer:.4f} ({india_wer*100:.2f}%)" if india_wer is not None else "India: no clips found")
 print("====================================")
