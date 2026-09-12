@@ -18,7 +18,7 @@ US_DIR = "us_clips"
 INDIA_DIR = "india_clips"
 
 # ── 2. Load Whisper ─────────────────────────────────────────────────────────
-MODEL_SIZE = "small"          # change to "tiny", "base", "medium", etc.
+MODEL_SIZE = "medium"          # change to "tiny", "base", "medium", etc.
 
 print(f"Loading whisper-{MODEL_SIZE} model...")
 model = whisper.load_model(MODEL_SIZE)
